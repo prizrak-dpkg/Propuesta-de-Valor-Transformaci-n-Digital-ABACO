@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Valor: Transformación Digital ABACO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- 
+    PALETTE: Trust & Vitality
+    Primary Blue: #1E3A8A (Corporate Trust)
+    Action Orange: #F97316 (Logistics/Food/Energy)
+    Tech Teal: #14B8A6 (Modernity/Go Lang)
+    Neutral Gray: #F3F4F6 (Background)
+    White: #FFFFFF
+    -->
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F3F4F6;
+            color: #1F2937;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 100%);
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 4px solid #F97316;
+        }
+        .flow-box {
+            background-color: #EFF6FF;
+            border: 2px solid #3B82F6;
+            color: #1E3A8A;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+        }
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: #F97316;
+            text-align: center;
+            margin: 0.5rem 0;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="pb-12">
+
+    <!-- HERO SECTION -->
+    <header class="gradient-header text-white p-8 md:p-16 text-center shadow-lg mb-8">
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">Transformación Digital ABACO</h1>
+        <p class="text-xl md:text-2xl text-orange-400 font-semibold mb-2">Centralización, Eficiencia y Transparencia</p>
+        <p class="max-w-3xl mx-auto text-gray-200">
+            Una propuesta de alto nivel para migrar de procesos manuales a un ecosistema digital automatizado, escalable y de bajo coste operativo.
+        </p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+        <!-- SECTION 1: THE CHALLENGE -->
+        <section>
+            <div class="mb-6">
+                <h2 class="text-3xl font-bold text-blue-900 border-l-4 border-orange-500 pl-4">1. El Desafío Operativo</h2>
+                <p class="mt-4 text-gray-700 text-lg">
+                    Actualmente, ABACO gestiona una operación masiva mediante hojas de cálculo y correos electrónicos. Esto genera lentitud en la respuesta, pérdida de trazabilidad y dependencia humana para tareas repetitivas. El objetivo es eliminar la fricción manual para maximizar el impacto social.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="card h-full flex flex-col justify-center">
+                    <h3 class="text-xl font-bold mb-4 text-center text-gray-800">Capacidad de Procesamiento Diario</h3>
+                    <div class="chart-container">
+                        <canvas id="capacityChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-4 text-center">
+                        Proyección comparativa entre la gestión manual actual y la capacidad automatizada del nuevo sistema.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-white p-6 rounded-lg shadow border-l-4 border-red-500">
+                        <h4 class="font-bold text-red-700">Puntos de Dolor Actuales</h4>
+                        <ul class="list-disc list-inside mt-2 text-gray-600 space-y-2">
+                            <li>Recepción descentralizada (Múltiples correos/fuentes).</li>
+                            <li>Clasificación manual de tipos de donación.</li>
+                            <li>Alta probabilidad de error humano en digitación.</li>
+                            <li>Tiempos de respuesta limitados por horario laboral.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow border-l-4 border-green-500">
+                        <h4 class="font-bold text-green-700">Beneficios Inmediatos</h4>
+                        <ul class="list-disc list-inside mt-2 text-gray-600 space-y-2">
+                            <li>Recepción 24/7 de anuncios de donación.</li>
+                            <li>Validación automática de estructuras de datos.</li>
+                            <li>Trazabilidad inmutable del proceso.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TECHNOLOGY STACK (WHY GO?) -->
+        <section class="bg-blue-50 p-8 rounded-xl">
+            <div class="mb-6">
+                <h2 class="text-3xl font-bold text-blue-900 border-l-4 border-teal-500 pl-4">2. Arquitectura Eficiente y Económica</h2>
+                <p class="mt-4 text-gray-700">
+                    Para garantizar la sostenibilidad financiera del proyecto, hemos seleccionado <strong>Go (Golang)</strong> y <strong>PostgreSQL</strong>. Esta combinación permite desplegar infraestructuras minimalistas (Docker) que consumen una fracción de la memoria RAM que requerirían tecnologías como Java o Python, reduciendo drásticamente la factura mensual de nube (DigitalOcean/GCP).
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Why Go Chart -->
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-4 text-center text-gray-800">Consumo de Memoria por Transacción (MB)</h3>
+                    <div class="chart-container">
+                        <canvas id="techResourceChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-4 text-center">
+                        Go permite manejar miles de peticiones concurrentes con recursos mínimos, ideal para VPS económicos.
+                    </p>
+                </div>
+
+                <!-- Tech Stack Cards -->
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-4 border border-gray-200">
+                        <div class="bg-teal-100 p-3 rounded-full text-2xl">⚙️</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Backend: Go (Golang)</h4>
+                            <p class="text-sm text-gray-600">Concurrencia nativa, binarios ligeros y despliegue rápido.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-4 border border-gray-200">
+                        <div class="bg-blue-100 p-3 rounded-full text-2xl">🗄️</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Base de Datos: PostgreSQL</h4>
+                            <p class="text-sm text-gray-600">Robustez relacional, escalable en DigitalOcean/GCP.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-4 border border-gray-200">
+                        <div class="bg-green-100 p-3 rounded-full text-2xl">🖥️</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Frontend: Vue.js + TS</h4>
+                            <p class="text-sm text-gray-600">Interfaz reactiva, tipado seguro y experiencia de usuario fluida.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-4 border border-gray-200">
+                        <div class="bg-orange-100 p-3 rounded-full text-2xl">☁️</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Infraestructura: Docker</h4>
+                            <p class="text-sm text-gray-600">Contenedores minimalistas fáciles de migrar y escalar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: PHASE 1 DETAIL -->
+        <section>
+            <div class="mb-6">
+                <h2 class="text-3xl font-bold text-blue-900 border-l-4 border-orange-500 pl-4">3. Foco Fase 1: Automatización de Recepción</h2>
+                <p class="mt-4 text-gray-700">
+                    El primer paso crítico es controlar la entrada de datos. El sistema leerá automáticamente diversas fuentes, clasificará la información y presentará una interfaz de validación rápida para el operador humano, aprendiendo de los errores para fases futuras.
+                </p>
+            </div>
+
+            <!-- Custom HTML Diagram for Flow -->
+            <div class="card bg-slate-50">
+                <h3 class="text-xl font-bold mb-8 text-center text-blue-900">Flujo de Datos: Fase 1</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center justify-center">
+                    
+                    <!-- Step 1 -->
+                    <div class="flex flex-col items-center">
+                        <div class="flow-box w-full bg-orange-100 border-orange-400">
+                            Fuentes de Datos
+                            <div class="text-xs font-normal mt-1">Email, EatCloud, Excel</div>
+                        </div>
+                        <div class="flow-arrow md:hidden">↓</div>
+                    </div>
+
+                    <!-- Arrow Horizontal -->
+                    <div class="hidden md:block text-3xl text-orange-400 text-center">➔</div>
+
+                    <!-- Step 2 -->
+                    <div class="flex flex-col items-center">
+                        <div class="flow-box w-full bg-teal-100 border-teal-400">
+                            Motor de Ingesta (Go)
+                            <div class="text-xs font-normal mt-1">Extracción y Normalización</div>
+                        </div>
+                        <div class="flow-arrow md:hidden">↓</div>
+                    </div>
+
+                    <!-- Arrow Horizontal -->
+                    <div class="hidden md:block text-3xl text-orange-400 text-center">➔</div>
+
+                    <!-- Step 3 -->
+                    <div class="flex flex-col items-center relative">
+                        <div class="flow-box w-full bg-blue-100 border-blue-600">
+                            Clasificación Inteligente
+                            <div class="text-xs font-normal mt-1">Único, Múltiple, Directo</div>
+                        </div>
+                        <!-- Branching lines simulation with borders -->
+                        <div class="absolute -bottom-6 w-0.5 h-6 bg-blue-400 md:hidden"></div> 
+                    </div>
+
+                </div>
+
+                <!-- Second Row for Logic -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 md:mt-12">
+                    <!-- Branch A -->
+                    <div class="border-t-2 border-l-2 border-gray-300 rounded-tl-xl p-4 relative mt-4 md:mt-0">
+                        <span class="absolute -top-3 left-4 bg-white px-2 text-sm text-gray-500 font-bold">Datos Válidos</span>
+                        <div class="flow-box bg-green-50 border-green-500">
+                            Registro Automático
+                            <div class="text-xs font-normal mt-1">Base de Datos PostgreSQL</div>
+                        </div>
+                    </div>
+
+                    <!-- Branch B -->
+                    <div class="border-t-2 border-r-2 border-gray-300 rounded-tr-xl p-4 relative mt-4 md:mt-0 text-right md:text-left">
+                         <span class="absolute -top-3 right-4 md:left-4 bg-white px-2 text-sm text-gray-500 font-bold">Datos Incompletos</span>
+                        <div class="flow-box bg-yellow-50 border-yellow-500">
+                            Panel de Supervisión (Vue)
+                            <div class="text-xs font-normal mt-1">Corrección Humana Rápida</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: TIMELINE -->
+        <section>
+            <div class="mb-6">
+                <h2 class="text-3xl font-bold text-blue-900 border-l-4 border-teal-500 pl-4">4. Cronograma de Ejecución</h2>
+                <p class="mt-4 text-gray-700">
+                    Propuesta de 6 meses dividida en 4 fases para entregar valor incremental sin interrumpir la operación actual.
+                </p>
+            </div>
+            
+            <div class="card">
+                <h3 class="text-xl font-bold mb-2 text-center text-gray-800">Cronograma Estimado (Semanas)</h3>
+                <div class="chart-container">
+                    <canvas id="timelineChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: ECONOMIC PROPOSAL -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div>
+                <div class="mb-6">
+                    <h2 class="text-3xl font-bold text-blue-900 border-l-4 border-orange-500 pl-4">5. Propuesta Económica</h2>
+                    <p class="mt-4 text-gray-700 text-lg">
+                        Entendemos y compartimos la misión de ABACO. Por ello, ofrecemos una estructura de costos donde donamos el <strong>50% del valor de la mano de obra</strong>, asegurando una solución de primer nivel a un costo accesible.
+                    </p>
+                </div>
+                <div class="bg-blue-900 text-white p-6 rounded-lg shadow-xl">
+                    <div class="text-sm uppercase tracking-wide opacity-75">Inversión Total para el Cliente</div>
+                    <div class="text-4xl font-bold my-2 text-orange-400">$ 27.000.000 COP</div>
+                    <div class="text-sm opacity-90 border-t border-blue-700 pt-2 mt-2">
+                        Dividido en pagos mensuales de <strong>$ 4.500.000 COP</strong> durante 6 meses.
+                    </div>
+                    <div class="mt-4 bg-blue-800 p-3 rounded text-center text-sm">
+                        Incluye: Desarrollo, Despliegue, Pruebas y Estabilización.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card flex flex-col items-center justify-center">
+                <h3 class="text-xl font-bold mb-4 text-center text-gray-800">Distribución del Valor del Proyecto</h3>
+                <div class="chart-container">
+                    <canvas id="budgetChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white p-8 mt-12 text-center">
+        <p class="font-semibold text-lg">Juntos construimos una logística más humana y eficiente.</p>
+        <p class="text-gray-400 text-sm mt-2">Propuesta de Desarrollo de Software | Stack: Go + Vue + Postgres</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- UTILITIES ---
+        // Function to wrap labels > 16 chars
+        function splitLabel(label) {
+            if (typeof label !== 'string' || label.length <= 16) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + ' ' + words[i]).length <= 16) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // Standard Tooltip config for multiline support
+        const commonTooltipOptions = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        // --- CHART 1: CAPACITY (Bar) ---
+        const ctxCapacity = document.getElementById('capacityChart').getContext('2d');
+        const labelsCap = ['Proceso Manual Actual', 'Sistema Automatizado (Go)'];
+        new Chart(ctxCapacity, {
+            type: 'bar',
+            data: {
+                labels: labelsCap.map(splitLabel),
+                datasets: [{
+                    label: 'Solicitudes procesadas por hora',
+                    data: [15, 800], // Hypothetical massive increase
+                    backgroundColor: ['#9CA3AF', '#F97316'],
+                    borderColor: ['#6B7280', '#EA580C'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: commonTooltipOptions
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Solicitudes / Hora' }
+                    }
+                }
+            }
+        });
+
+        // --- CHART 2: TECH RESOURCES (Bar) ---
+        const ctxTech = document.getElementById('techResourceChart').getContext('2d');
+        const labelsTech = ['Go (Propuesto)', 'Node.js', 'Java / Python'];
+        new Chart(ctxTech, {
+            type: 'bar',
+            data: {
+                labels: labelsTech.map(splitLabel),
+                datasets: [{
+                    label: 'Consumo RAM (MB) - Carga Base',
+                    data: [20, 150, 400], // Approximate relative values
+                    backgroundColor: ['#14B8A6', '#CBD5E1', '#94A3B8'],
+                    borderColor: ['#0D9488', '#94A3B8', '#64748B'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: commonTooltipOptions,
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Megabytes (MB)' }
+                    }
+                }
+            }
+        });
+
+        // --- CHART 3: TIMELINE (Horizontal Bar) ---
+        const ctxTimeline = document.getElementById('timelineChart').getContext('2d');
+        const labelsTimeline = [
+            'Fase 1: Recepción & Validación', 
+            'Fase 2: Estandarización', 
+            'Fase 3: Distribución', 
+            'Fase 4: Consolidación Final'
+        ];
+        
+        new Chart(ctxTimeline, {
+            type: 'bar',
+            data: {
+                labels: labelsTimeline.map(splitLabel),
+                datasets: [
+                    {
+                        label: 'Inicio (Semanas desde arranque)',
+                        data: [0, 8, 14, 20], // Start weeks
+                        backgroundColor: 'transparent',
+                        borderColor: 'transparent',
+                        borderWidth: 0,
+                        barPercentage: 0.6
+                    },
+                    {
+                        label: 'Duración (Semanas)',
+                        data: [8, 6, 6, 4], // Duration of each phase (Total ~24 weeks / 6 months)
+                        backgroundColor: '#1E3A8A',
+                        borderColor: '#1E40AF',
+                        borderWidth: 1,
+                        barPercentage: 0.6
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y', // Horizontal
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: commonTooltipOptions,
+                    legend: { display: false },
+                    title: { display: true, text: 'Duración por Etapas (Total: 6 Meses)'}
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: { display: true, text: 'Semanas del Proyecto' }
+                    },
+                    y: {
+                        stacked: true
+                    }
+                }
+            }
+        });
+
+        // --- CHART 4: BUDGET (Donut) ---
+        const ctxBudget = document.getElementById('budgetChart').getContext('2d');
+        const labelsBudget = ['Costo al Cliente', 'Donación de Mano de Obra'];
+        new Chart(ctxBudget, {
+            type: 'doughnut',
+            data: {
+                labels: labelsBudget.map(splitLabel),
+                datasets: [{
+                    data: [27, 27], // 50-50 split
+                    backgroundColor: ['#F97316', '#1E3A8A'], // Orange (Payment), Blue (Donation)
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: commonTooltipOptions,
+                    legend: {
+                        position: 'bottom'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Total Valor Percibido: 54 Millones COP'
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
