@@ -3,490 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propuesta de Valor: Transformación Digital ABACO</title>
+    <title>Transformación Digital ABACO</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
-    <!-- 
-    PALETTE: Trust & Vitality
-    Primary Blue: #1E3A8A (Corporate Trust)
-    Action Orange: #F97316 (Logistics/Food/Energy)
-    Tech Teal: #14B8A6 (Modernity/Go Lang)
-    Neutral Gray: #F3F4F6 (Background)
-    White: #FFFFFF
-    -->
-
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F3F4F6;
-            color: #1F2937;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
-            }
-        }
-        .gradient-header {
-            background: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 100%);
-        }
-        .card {
-            background-color: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-top: 4px solid #F97316;
-        }
-        .flow-box {
-            background-color: #EFF6FF;
-            border: 2px solid #3B82F6;
-            color: #1E3A8A;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            text-align: center;
-            font-weight: 600;
-            position: relative;
-        }
-        .flow-arrow {
-            font-size: 1.5rem;
-            color: #F97316;
-            text-align: center;
-            margin: 0.5rem 0;
-            line-height: 1;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="pb-12">
+<body class="min-h-screen bg-gray-50 text-slate-800 p-4 md:p-8">
 
-    <!-- HERO SECTION -->
-    <header class="gradient-header text-white p-8 md:p-16 text-center shadow-lg mb-8">
-        <h1 class="text-3xl md:text-5xl font-bold mb-4">Transformación Digital ABACO</h1>
-        <p class="text-xl md:text-2xl text-orange-400 font-semibold mb-2">Centralización, Eficiencia y Transparencia</p>
-        <p class="max-w-3xl mx-auto text-gray-200">
-            Una propuesta de alto nivel para migrar de procesos manuales a un ecosistema digital automatizado, escalable y de bajo coste operativo.
-        </p>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-
-        <!-- SECTION 1: THE CHALLENGE -->
-        <section>
-            <div class="mb-6">
-                <h2 class="text-3xl font-bold text-blue-900 border-l-4 border-orange-500 pl-4">1. El Desafío Operativo</h2>
-                <p class="mt-4 text-gray-700 text-lg">
-                    Actualmente, ABACO gestiona una operación masiva mediante hojas de cálculo y correos electrónicos. Esto genera lentitud en la respuesta, pérdida de trazabilidad y dependencia humana para tareas repetitivas. El objetivo es eliminar la fricción manual para maximizar el impacto social.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div class="card h-full flex flex-col justify-center">
-                    <h3 class="text-xl font-bold mb-4 text-center text-gray-800">Capacidad de Procesamiento Diario</h3>
-                    <div class="chart-container">
-                        <canvas id="capacityChart"></canvas>
-                    </div>
-                    <p class="text-sm text-gray-500 mt-4 text-center">
-                        Proyección comparativa entre la gestión manual actual y la capacidad automatizada del nuevo sistema.
-                    </p>
-                </div>
-                <div class="space-y-4">
-                    <div class="bg-white p-6 rounded-lg shadow border-l-4 border-red-500">
-                        <h4 class="font-bold text-red-700">Puntos de Dolor Actuales</h4>
-                        <ul class="list-disc list-inside mt-2 text-gray-600 space-y-2">
-                            <li>Recepción descentralizada (Múltiples correos/fuentes).</li>
-                            <li>Clasificación manual de tipos de donación.</li>
-                            <li>Alta probabilidad de error humano en digitación.</li>
-                            <li>Tiempos de respuesta limitados por horario laboral.</li>
-                        </ul>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow border-l-4 border-green-500">
-                        <h4 class="font-bold text-green-700">Beneficios Inmediatos</h4>
-                        <ul class="list-disc list-inside mt-2 text-gray-600 space-y-2">
-                            <li>Recepción 24/7 de anuncios de donación.</li>
-                            <li>Validación automática de estructuras de datos.</li>
-                            <li>Trazabilidad inmutable del proceso.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 2: TECHNOLOGY STACK (WHY GO?) -->
-        <section class="bg-blue-50 p-8 rounded-xl">
-            <div class="mb-6">
-                <h2 class="text-3xl font-bold text-blue-900 border-l-4 border-teal-500 pl-4">2. Arquitectura Eficiente y Económica</h2>
-                <p class="mt-4 text-gray-700">
-                    Para garantizar la sostenibilidad financiera del proyecto, hemos seleccionado <strong>Go (Golang)</strong> y <strong>PostgreSQL</strong>. Esta combinación permite desplegar infraestructuras minimalistas (Docker) que consumen una fracción de la memoria RAM que requerirían tecnologías como Java o Python, reduciendo drásticamente la factura mensual de nube (DigitalOcean/GCP).
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Why Go Chart -->
-                <div class="card">
-                    <h3 class="text-xl font-bold mb-4 text-center text-gray-800">Consumo de Memoria por Transacción (MB)</h3>
-                    <div class="chart-container">
-                        <canvas id="techResourceChart"></canvas>
-                    </div>
-                    <p class="text-sm text-gray-500 mt-4 text-center">
-                        Go permite manejar miles de peticiones concurrentes con recursos mínimos, ideal para VPS económicos.
-                    </p>
-                </div>
-
-                <!-- Tech Stack Cards -->
-                <div class="grid grid-cols-1 gap-4">
-                    <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-4 border border-gray-200">
-                        <div class="bg-teal-100 p-3 rounded-full text-2xl">⚙️</div>
-                        <div>
-                            <h4 class="font-bold text-gray-900">Backend: Go (Golang)</h4>
-                            <p class="text-sm text-gray-600">Concurrencia nativa, binarios ligeros y despliegue rápido.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-4 border border-gray-200">
-                        <div class="bg-blue-100 p-3 rounded-full text-2xl">🗄️</div>
-                        <div>
-                            <h4 class="font-bold text-gray-900">Base de Datos: PostgreSQL</h4>
-                            <p class="text-sm text-gray-600">Robustez relacional, escalable en DigitalOcean/GCP.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-4 border border-gray-200">
-                        <div class="bg-green-100 p-3 rounded-full text-2xl">🖥️</div>
-                        <div>
-                            <h4 class="font-bold text-gray-900">Frontend: Vue.js + TS</h4>
-                            <p class="text-sm text-gray-600">Interfaz reactiva, tipado seguro y experiencia de usuario fluida.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow flex items-center space-x-4 border border-gray-200">
-                        <div class="bg-orange-100 p-3 rounded-full text-2xl">☁️</div>
-                        <div>
-                            <h4 class="font-bold text-gray-900">Infraestructura: Docker</h4>
-                            <p class="text-sm text-gray-600">Contenedores minimalistas fáciles de migrar y escalar.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 3: PHASE 1 DETAIL -->
-        <section>
-            <div class="mb-6">
-                <h2 class="text-3xl font-bold text-blue-900 border-l-4 border-orange-500 pl-4">3. Foco Fase 1: Automatización de Recepción</h2>
-                <p class="mt-4 text-gray-700">
-                    El primer paso crítico es controlar la entrada de datos. El sistema leerá automáticamente diversas fuentes, clasificará la información y presentará una interfaz de validación rápida para el operador humano, aprendiendo de los errores para fases futuras.
-                </p>
-            </div>
-
-            <!-- Custom HTML Diagram for Flow -->
-            <div class="card bg-slate-50">
-                <h3 class="text-xl font-bold mb-8 text-center text-blue-900">Flujo de Datos: Fase 1</h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center justify-center">
-                    
-                    <!-- Step 1 -->
-                    <div class="flex flex-col items-center">
-                        <div class="flow-box w-full bg-orange-100 border-orange-400">
-                            Fuentes de Datos
-                            <div class="text-xs font-normal mt-1">Email, EatCloud, Excel</div>
-                        </div>
-                        <div class="flow-arrow md:hidden">↓</div>
-                    </div>
-
-                    <!-- Arrow Horizontal -->
-                    <div class="hidden md:block text-3xl text-orange-400 text-center">➔</div>
-
-                    <!-- Step 2 -->
-                    <div class="flex flex-col items-center">
-                        <div class="flow-box w-full bg-teal-100 border-teal-400">
-                            Motor de Ingesta (Go)
-                            <div class="text-xs font-normal mt-1">Extracción y Normalización</div>
-                        </div>
-                        <div class="flow-arrow md:hidden">↓</div>
-                    </div>
-
-                    <!-- Arrow Horizontal -->
-                    <div class="hidden md:block text-3xl text-orange-400 text-center">➔</div>
-
-                    <!-- Step 3 -->
-                    <div class="flex flex-col items-center relative">
-                        <div class="flow-box w-full bg-blue-100 border-blue-600">
-                            Clasificación Inteligente
-                            <div class="text-xs font-normal mt-1">Único, Múltiple, Directo</div>
-                        </div>
-                        <!-- Branching lines simulation with borders -->
-                        <div class="absolute -bottom-6 w-0.5 h-6 bg-blue-400 md:hidden"></div> 
-                    </div>
-
-                </div>
-
-                <!-- Second Row for Logic -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 md:mt-12">
-                    <!-- Branch A -->
-                    <div class="border-t-2 border-l-2 border-gray-300 rounded-tl-xl p-4 relative mt-4 md:mt-0">
-                        <span class="absolute -top-3 left-4 bg-white px-2 text-sm text-gray-500 font-bold">Datos Válidos</span>
-                        <div class="flow-box bg-green-50 border-green-500">
-                            Registro Automático
-                            <div class="text-xs font-normal mt-1">Base de Datos PostgreSQL</div>
-                        </div>
-                    </div>
-
-                    <!-- Branch B -->
-                    <div class="border-t-2 border-r-2 border-gray-300 rounded-tr-xl p-4 relative mt-4 md:mt-0 text-right md:text-left">
-                         <span class="absolute -top-3 right-4 md:left-4 bg-white px-2 text-sm text-gray-500 font-bold">Datos Incompletos</span>
-                        <div class="flow-box bg-yellow-50 border-yellow-500">
-                            Panel de Supervisión (Vue)
-                            <div class="text-xs font-normal mt-1">Corrección Humana Rápida</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 4: TIMELINE -->
-        <section>
-            <div class="mb-6">
-                <h2 class="text-3xl font-bold text-blue-900 border-l-4 border-teal-500 pl-4">4. Cronograma de Ejecución</h2>
-                <p class="mt-4 text-gray-700">
-                    Propuesta de 6 meses dividida en 4 fases para entregar valor incremental sin interrumpir la operación actual.
-                </p>
-            </div>
-            
-            <div class="card">
-                <h3 class="text-xl font-bold mb-2 text-center text-gray-800">Cronograma Estimado (Semanas)</h3>
-                <div class="chart-container">
-                    <canvas id="timelineChart"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 5: ECONOMIC PROPOSAL -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div>
-                <div class="mb-6">
-                    <h2 class="text-3xl font-bold text-blue-900 border-l-4 border-orange-500 pl-4">5. Propuesta Económica</h2>
-                    <p class="mt-4 text-gray-700 text-lg">
-                        Entendemos y compartimos la misión de ABACO. Por ello, ofrecemos una estructura de costos donde donamos el <strong>50% del valor de la mano de obra</strong>, asegurando una solución de primer nivel a un costo accesible.
-                    </p>
-                </div>
-                <div class="bg-blue-900 text-white p-6 rounded-lg shadow-xl">
-                    <div class="text-sm uppercase tracking-wide opacity-75">Inversión Total para el Cliente</div>
-                    <div class="text-4xl font-bold my-2 text-orange-400">$ 27.000.000 COP</div>
-                    <div class="text-sm opacity-90 border-t border-blue-700 pt-2 mt-2">
-                        Dividido en pagos mensuales de <strong>$ 4.500.000 COP</strong> durante 6 meses.
-                    </div>
-                    <div class="mt-4 bg-blue-800 p-3 rounded text-center text-sm">
-                        Incluye: Desarrollo, Despliegue, Pruebas y Estabilización.
-                    </div>
-                </div>
-            </div>
-
-            <div class="card flex flex-col items-center justify-center">
-                <h3 class="text-xl font-bold mb-4 text-center text-gray-800">Distribución del Valor del Proyecto</h3>
-                <div class="chart-container">
-                    <canvas id="budgetChart"></canvas>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-gray-800 text-white p-8 mt-12 text-center">
-        <p class="font-semibold text-lg">Juntos construimos una logística más humana y eficiente.</p>
-        <p class="text-gray-400 text-sm mt-2">Propuesta de Desarrollo de Software | Stack: Go + Vue + Postgres</p>
-    </footer>
-
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        // --- UTILITIES ---
-        // Function to wrap labels > 16 chars
-        function splitLabel(label) {
-            if (typeof label !== 'string' || label.length <= 16) {
-                return label;
-            }
-            const words = label.split(' ');
-            const lines = [];
-            let currentLine = words[0];
-
-            for (let i = 1; i < words.length; i++) {
-                if ((currentLine + ' ' + words[i]).length <= 16) {
-                    currentLine += ' ' + words[i];
-                } else {
-                    lines.push(currentLine);
-                    currentLine = words[i];
-                }
-            }
-            lines.push(currentLine);
-            return lines;
-        }
-
-        // Standard Tooltip config for multiline support
-        const commonTooltipOptions = {
-            callbacks: {
-                title: function(tooltipItems) {
-                    const item = tooltipItems[0];
-                    let label = item.chart.data.labels[item.dataIndex];
-                    if (Array.isArray(label)) {
-                        return label.join(' ');
-                    } else {
-                        return label;
-                    }
-                }
-            }
-        };
-
-        // --- CHART 1: CAPACITY (Bar) ---
-        const ctxCapacity = document.getElementById('capacityChart').getContext('2d');
-        const labelsCap = ['Proceso Manual Actual', 'Sistema Automatizado (Go)'];
-        new Chart(ctxCapacity, {
-            type: 'bar',
-            data: {
-                labels: labelsCap.map(splitLabel),
-                datasets: [{
-                    label: 'Solicitudes procesadas por hora',
-                    data: [15, 800], // Hypothetical massive increase
-                    backgroundColor: ['#9CA3AF', '#F97316'],
-                    borderColor: ['#6B7280', '#EA580C'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false },
-                    tooltip: commonTooltipOptions
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: { display: true, text: 'Solicitudes / Hora' }
-                    }
-                }
-            }
-        });
-
-        // --- CHART 2: TECH RESOURCES (Bar) ---
-        const ctxTech = document.getElementById('techResourceChart').getContext('2d');
-        const labelsTech = ['Go (Propuesto)', 'Node.js', 'Java / Python'];
-        new Chart(ctxTech, {
-            type: 'bar',
-            data: {
-                labels: labelsTech.map(splitLabel),
-                datasets: [{
-                    label: 'Consumo RAM (MB) - Carga Base',
-                    data: [20, 150, 400], // Approximate relative values
-                    backgroundColor: ['#14B8A6', '#CBD5E1', '#94A3B8'],
-                    borderColor: ['#0D9488', '#94A3B8', '#64748B'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    tooltip: commonTooltipOptions,
-                    legend: { display: false }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: { display: true, text: 'Megabytes (MB)' }
-                    }
-                }
-            }
-        });
-
-        // --- CHART 3: TIMELINE (Horizontal Bar) ---
-        const ctxTimeline = document.getElementById('timelineChart').getContext('2d');
-        const labelsTimeline = [
-            'Fase 1: Recepción & Validación', 
-            'Fase 2: Estandarización', 
-            'Fase 3: Distribución', 
-            'Fase 4: Consolidación Final'
-        ];
+    <!-- Contenedor Principal -->
+    <div class="max-w-5xl mx-auto bg-white shadow-2xl rounded-xl overflow-hidden border border-slate-200">
         
-        new Chart(ctxTimeline, {
-            type: 'bar',
-            data: {
-                labels: labelsTimeline.map(splitLabel),
-                datasets: [
-                    {
-                        label: 'Inicio (Semanas desde arranque)',
-                        data: [0, 8, 14, 20], // Start weeks
-                        backgroundColor: 'transparent',
-                        borderColor: 'transparent',
-                        borderWidth: 0,
-                        barPercentage: 0.6
-                    },
-                    {
-                        label: 'Duración (Semanas)',
-                        data: [8, 6, 6, 4], // Duration of each phase (Total ~24 weeks / 6 months)
-                        backgroundColor: '#1E3A8A',
-                        borderColor: '#1E40AF',
-                        borderWidth: 1,
-                        barPercentage: 0.6
-                    }
-                ]
-            },
-            options: {
-                indexAxis: 'y', // Horizontal
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    tooltip: commonTooltipOptions,
-                    legend: { display: false },
-                    title: { display: true, text: 'Duración por Etapas (Total: 6 Meses)'}
-                },
-                scales: {
-                    x: {
-                        stacked: true,
-                        title: { display: true, text: 'Semanas del Proyecto' }
-                    },
-                    y: {
-                        stacked: true
-                    }
-                }
-            }
-        });
+        <!-- ENCABEZADO -->
+        <div class="bg-blue-900 text-white p-8 relative overflow-hidden">
+            <!-- Icono de fondo -->
+            <div class="absolute top-0 right-0 opacity-10 transform translate-x-10 -translate-y-10">
+                <i data-lucide="database" width="200" height="200"></i>
+            </div>
+            
+            <div class="relative z-10">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h1 class="text-3xl md:text-4xl font-bold mb-2">Transformación Digital ABACO</h1>
+                        <p class="text-blue-200 text-xl font-light">Sistema Centralizado de Gestión de Donaciones</p>
+                    </div>
+                    <div class="hidden md:block text-right">
+                        <div class="bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/20">
+                            <span class="block text-xs uppercase tracking-wider text-blue-200">Duración Total</span>
+                            <span class="text-2xl font-bold">6 Meses</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 flex flex-wrap gap-4 text-sm font-medium">
+                    <span class="bg-green-500 text-white px-3 py-1 rounded-full flex items-center gap-1">
+                        <i data-lucide="trending-up" width="14" height="14"></i> Alta Transaccionalidad
+                    </span>
+                    <span class="bg-blue-600 text-white px-3 py-1 rounded-full flex items-center gap-1">
+                        <i data-lucide="server" width="14" height="14"></i> Infraestructura Go + Linux
+                    </span>
+                    <span class="bg-orange-500 text-white px-3 py-1 rounded-full flex items-center gap-1">
+                        <i data-lucide="shield-check" width="14" height="14"></i> Trazabilidad Total
+                    </span>
+                </div>
+            </div>
+        </div>
 
-        // --- CHART 4: BUDGET (Donut) ---
-        const ctxBudget = document.getElementById('budgetChart').getContext('2d');
-        const labelsBudget = ['Costo al Cliente', 'Donación de Mano de Obra'];
-        new Chart(ctxBudget, {
-            type: 'doughnut',
-            data: {
-                labels: labelsBudget.map(splitLabel),
-                datasets: [{
-                    data: [27, 27], // 50-50 split
-                    backgroundColor: ['#F97316', '#1E3A8A'], // Orange (Payment), Blue (Donation)
-                    hoverOffset: 4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    tooltip: commonTooltipOptions,
-                    legend: {
-                        position: 'bottom'
-                    },
-                    title: {
-                        display: true,
-                        text: 'Total Valor Percibido: 54 Millones COP'
-                    }
-                }
-            }
-        });
+        <div class="p-8 space-y-12">
+            
+            <!-- SECCIÓN 1: FASES DEL PROYECTO (TIMELINE) -->
+            <section>
+                <h2 class="text-2xl font-bold text-blue-900 mb-6 flex items-center gap-2 border-b border-gray-200 pb-2">
+                    <i data-lucide="clock" class="text-blue-600"></i> Cronograma de Ejecución
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+                    <!-- Línea conectora (Desktop) -->
+                    <div class="hidden md:block absolute top-4 left-0 w-full h-1 bg-gray-200 -z-10"></div>
 
+                    <!-- FASE 1 -->
+                    <div class="bg-white p-4 rounded-lg border border-red-200 shadow-sm relative group hover:-translate-y-1 transition-transform duration-300">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                            CRÍTICO
+                        </div>
+                        <div class="text-red-600 font-bold mb-1 mt-2">Meses 1-3</div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">El Núcleo (Core)</h3>
+                        <p class="text-sm text-slate-600 mb-3 leading-relaxed">
+                            Automatización de procesos manuales actuales y estabilización.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2 text-xs text-slate-700">
+                                <i data-lucide="check-circle" class="text-green-500 mt-0.5" width="12" height="12"></i> Recepción centralizada de emails
+                            </li>
+                            <li class="flex items-start gap-2 text-xs text-slate-700">
+                                <i data-lucide="check-circle" class="text-green-500 mt-0.5" width="12" height="12"></i> Logística y Conciliaciones
+                            </li>
+                            <li class="flex items-start gap-2 text-xs text-slate-700">
+                                <i data-lucide="check-circle" class="text-green-500 mt-0.5" width="12" height="12"></i> Supervisión Humana de Datos
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- FASE 2 -->
+                    <div class="bg-white p-4 rounded-lg border border-blue-100 shadow-sm relative group hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-blue-600 font-bold mb-1 mt-4">Mes 4</div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">Experiencia</h3>
+                        <p class="text-sm text-slate-600 mb-3 leading-relaxed">
+                            Mejora de interfaz y conexiones.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2 text-xs text-slate-700">
+                                <i data-lucide="check-circle" class="text-blue-400 mt-0.5" width="12" height="12"></i> UI/UX Avanzado Operadores
+                            </li>
+                            <li class="flex items-start gap-2 text-xs text-slate-700">
+                                <i data-lucide="check-circle" class="text-blue-400 mt-0.5" width="12" height="12"></i> Integraciones API Directas
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- FASE 3 -->
+                    <div class="bg-white p-4 rounded-lg border border-blue-100 shadow-sm relative group hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-blue-600 font-bold mb-1 mt-4">Mes 5</div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">Ecosistema</h3>
+                        <p class="text-sm text-slate-600 mb-3 leading-relaxed">
+                            Portales de autogestión externos.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2 text-xs text-slate-700">
+                                <i data-lucide="check-circle" class="text-blue-400 mt-0.5" width="12" height="12"></i> Portal Web Donantes/Bancos
+                            </li>
+                            <li class="flex items-start gap-2 text-xs text-slate-700">
+                                <i data-lucide="check-circle" class="text-blue-400 mt-0.5" width="12" height="12"></i> Google Cloud Storage
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- FASE 4 -->
+                    <div class="bg-white p-4 rounded-lg border border-blue-100 shadow-sm relative group hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-blue-600 font-bold mb-1 mt-4">Mes 6</div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">Expansión</h3>
+                        <p class="text-sm text-slate-600 mb-3 leading-relaxed">
+                            Preparación para el futuro masivo.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2 text-xs text-slate-700">
+                                <i data-lucide="check-circle" class="text-blue-400 mt-0.5" width="12" height="12"></i> API Gateway
+                            </li>
+                            <li class="flex items-start gap-2 text-xs text-slate-700">
+                                <i data-lucide="check-circle" class="text-blue-400 mt-0.5" width="12" height="12"></i> Pruebas de Carga
+                            </li>
+                            <li class="flex items-start gap-2 text-xs text-slate-700">
+                                <i data-lucide="check-circle" class="text-blue-400 mt-0.5" width="12" height="12"></i> Entrega Final
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: PROPUESTA ECONÓMICA Y VALOR (GRID) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Tarjeta de Inversión -->
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                    <h2 class="text-xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+                        <i data-lucide="dollar-sign" class="text-blue-600"></i> Inversión del Proyecto
+                    </h2>
+                    
+                    <div class="flex flex-col gap-6">
+                        <div>
+                            <div class="flex justify-between text-sm text-slate-500 mb-1">
+                                <span>Valor Comercial Real (Estimado)</span>
+                                <span class="line-through decoration-red-500 decoration-2">$150.000.000 COP</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-4">
+                                <div class="bg-slate-400 h-4 rounded-full w-full opacity-50"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-end mb-1">
+                                <span class="text-sm font-bold text-green-700">Costo para ABACO (Tarifa Sostenimiento)</span>
+                                <span class="text-2xl font-bold text-blue-900">$27.000.000 COP</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-6 overflow-hidden relative">
+                                <div class="bg-green-500 h-6 rounded-full w-[18%] relative z-10 flex items-center justify-center text-[10px] text-white font-bold">
+                                    18%
+                                </div>
+                                <div class="absolute top-0 right-0 h-full w-[82%] bg-blue-100 flex items-center justify-center text-xs text-blue-800 font-bold tracking-widest">
+                                    DONACIÓN TÉCNICA (>80%)
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-2 text-right">
+                                *Incluye: Desarrollo, Arquitectura Cloud, QA y Gestión.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg border border-slate-200 mt-2 flex justify-between items-center">
+                            <div>
+                                <p class="text-sm text-slate-500">Flujo de Caja</p>
+                                <p class="font-bold text-slate-700">6 Cuotas Mensuales</p>
+                            </div>
+                            <div class="text-xl font-bold text-blue-600">
+                                $4.500.000 <span class="text-sm text-slate-400 font-normal">/mes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Sostenibilidad Operativa -->
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                    <h2 class="text-xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+                        <i data-lucide="bar-chart-3" class="text-blue-600"></i> Eficiencia Operativa (OPEX)
+                    </h2>
+                    
+                    <p class="text-sm text-slate-600 mb-6">
+                        Gracias al uso de <strong>Golang (Go)</strong> y arquitecturas nativas de nube, los costos recurrentes mensuales son mínimos, garantizando sostenibilidad.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-white rounded border border-slate-200">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="server" class="text-purple-500" width="18" height="18"></i>
+                                <span class="text-sm font-medium">VPS Hetzner (Cómputo)</span>
+                            </div>
+                            <span class="font-bold text-slate-700">~15 USD</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-white rounded border border-slate-200">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="database" class="text-blue-500" width="18" height="18"></i>
+                                <span class="text-sm font-medium">DB DigitalOcean (Datos)</span>
+                            </div>
+                            <span class="font-bold text-slate-700">~30 USD</span>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-white rounded border border-slate-200">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="globe" class="text-orange-500" width="18" height="18"></i>
+                                <span class="text-sm font-medium">Storage/Procesamiento (10K docs/mes)</span>
+                            </div>
+                            <span class="font-bold text-slate-700">~15 USD</span>
+                        </div>
+
+                        <div class="border-t border-slate-300 pt-4 flex justify-between items-center">
+                            <span class="font-bold text-blue-900 uppercase text-sm">Costo Mensual Estimado</span>
+                            <span class="text-2xl font-bold text-green-600">~60 USD</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- FOOTER: Stack Tecnológico -->
+            <div class="border-t border-gray-100 pt-8">
+                <h3 class="text-center text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Garantía Tecnológica</h3>
+                <div class="flex flex-wrap justify-center gap-6 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                    <div class="flex flex-col items-center gap-1">
+                        <div class="h-10 w-10 bg-cyan-100 rounded flex items-center justify-center text-cyan-600 font-bold">Go</div>
+                        <span class="text-xs font-semibold">Golang</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1">
+                        <div class="h-10 w-10 bg-green-100 rounded flex items-center justify-center text-green-600 font-bold">Vue</div>
+                        <span class="text-xs font-semibold">Vue.js</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1">
+                        <div class="h-10 w-10 bg-blue-100 rounded flex items-center justify-center text-blue-600 font-bold">PG</div>
+                        <span class="text-xs font-semibold">PostgreSQL</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1">
+                        <div class="h-10 w-10 bg-blue-50 rounded flex items-center justify-center text-blue-800 font-bold">DO</div>
+                        <span class="text-xs font-semibold">Docker</span>
+                    </div>
+                </div>
+                <p class="text-center text-xs text-slate-400 mt-6">
+                    Propuesta confidencial preparada para la junta directiva de ABACO Colombia - 2026
+                </p>
+            </div>
+        
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
     </script>
 </body>
 </html>
